@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>VueJs</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <style>
+            #app {
+                border: solid 1px gray;
+                height: 100vh;
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <h3>Digite seu nome</h3>
+            <input
+                v-model:value="name"
+                v-on:keyup.enter="enterPressed"
+                v-on:keyup.space="spacePressed"
+                type="text"
+                name="Name"
+                id=""
+            />
+        </div>
+
+        <script>
+            new Vue({
+                el: "#app",
+                data: {
+                    name: ""
+                },
+                methods: {
+                    enterPressed(e) {
+                        console.log(e);
+                        alert("Apertou enter !");
+                    },
+                    spacePressed(e) {
+                        // alert("Espaços não são permitidos !");
+                        this.name = this.name.replace(" ", "-");
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
