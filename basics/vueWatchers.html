@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>VueJs</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <style></style>
+    </head>
+    <body>
+        <div id="app">
+            <h1>Current value: {{ value }}</h1>
+            <h4>{{ value > 10 ? "Greater than 10" : "Smaller than 10" }}</h4>
+            <input v-model:value="value" type="text" name="" id="" />
+            <br />
+            <br />
+            <button v-on:click="add">Add</button>
+            <button v-on:click="sub">Sub</button>
+        </div>
+
+        <script>
+            let vm = new Vue({
+                el: "#app",
+                data: {
+                    value: 0
+                },
+                watch: {
+                    value(newValue, oldValue) {
+                        if (isNaN(newValue)) {
+                            this.value = oldValue;
+                            alert("Only numbers friend !");
+                        }
+                    }
+                },
+                methods: {
+                    add() {
+                        this.value++;
+                    },
+                    sub() {
+                        this.value--;
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
