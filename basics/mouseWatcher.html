@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>VueJs</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <style>
+            #app {
+                border: solid 1px gray;
+                height: 100vh;
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div v-on:mousemove="updateXY" id="app">
+            <h3>Mouse Position</h3>
+            <p>X:{{ x }} Y:{{ y }}</p>
+        </div>
+
+        <script>
+            new Vue({
+                el: "#app",
+                data: {
+                    x: 0,
+                    y: 0
+                },
+                methods: {
+                    updateXY(e) {
+                        (this.x = e.clientX), (this.y = e.clientY);
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
