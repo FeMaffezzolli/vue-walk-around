@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>VueJs</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <style>
+            .main {
+                display: grid;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                text-align: center;
+            }
+
+            .main > p {
+                color: #333;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app" class="main">
+            <h1>Ola</h1>
+            <h2>Seja bem vindo</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Consequuntur sequi repellendus provident repellat, eius
+                accusantium! Iure, recusandae fugit! Soluta, ad ipsa obcaecati
+                maxime explicabo magnam tenetur veniam exercitationem quos unde
+                velit magni nesciunt voluptatem eligendi quam harum, eos.
+            </p>
+        </div>
+
+        <script>
+            new Vue({
+                el: "#app",
+                data: {},
+                methods: {}
+            });
+        </script>
+    </body>
+</html>
