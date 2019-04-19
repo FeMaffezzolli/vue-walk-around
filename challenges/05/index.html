@@ -55,10 +55,13 @@
             <h2>#04</h2>
             <ul>
                 <li v-for="(value, key, index) in aluno">
-                    <div v-if="typeof value === 'object'">
-                        <p v-for="v in value">
-                            {{ v }}
-                        </p>
+                    <div v-if="Array.isArray(value)">
+                        <p>Notas:</p>
+                        <ul>
+                            <li v-for="v in value">
+                                {{ v }}
+                            </li>
+                        </ul>
                     </div>
                     <div v-else>{{ value }}</div>
                 </li>

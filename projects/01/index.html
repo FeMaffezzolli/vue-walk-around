@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>#1</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="https://unpkg.com/vue"></script>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+        <div id="container">
+            <!-- Life box -->
+            <div class="life">
+                <div class="player center">
+                    <h4>Jogador</h4>
+                    <div class="lifeBar">
+                        <div :style="[playerLifeBar]"></div>
+                    </div>
+                    <p>{{ playerLife * 100 }}%</p>
+                </div>
+                <div class="monster center">
+                    <h4>Monstro</h4>
+                    <div class="lifeBar">
+                        <div :style="[monsterLifeBar]"></div>
+                    </div>
+                    <p>{{ monsterLife * 100 }}%</p>
+                </div>
+            </div>
+            <br />
+            <!-- Buttons box -->
+            <div class="buttons">
+                <div v-if="running">
+                    <button class="btn btn-danger">Ataque</button>
+                    <button class="btn btn-warning">Ataque especial</button>
+                    <button class="btn btn-success">Curar</button>
+                    <button class="btn btn-secondary" @click="running=false">
+                        Desistir
+                    </button>
+                </div>
+
+                <div v-else>
+                    <button class="btn btn-primary" @click="running=true">
+                        Iniciar jogo
+                    </button>
+                </div>
+            </div>
+            <!-- History box -->
+            <div class="history"></div>
+        </div>
+        <script src="app.js"></script>
+    </body>
+</html>
