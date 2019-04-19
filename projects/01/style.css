@@ -23,6 +23,21 @@
     justify-content: center;
 }
 
+.history {
+    width: 95%;
+    height: auto;
+    margin: 0 auto;
+    /* padding: 0 auto; */
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+    display: grid;
+    align-items: center;
+    align-content: center;
+    justify-content: stretch;
+    text-align: center;
+    vertical-align: center;
+    padding-top: 1em;
+}
+
 .center {
     display: grid;
     justify-items: center;
@@ -32,4 +47,24 @@
     width: 280px;
     height: 25px;
     border: lightgray 1px solid;
+}
+
+div > h3 {
+    color: #333;
+}
+
+.monster {
+    background-color: #dc3545;
+    margin: 0 auto;
+    color: white;
+    width: 90%;
+    margin-bottom: 1em;
+}
+
+.player {
+    background-color: #28a745;
+    margin: 0 auto;
+    color: white;
+    width: 90%;
+    margin-bottom: 1em;
 }

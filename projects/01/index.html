@@ -23,41 +23,56 @@
         <div id="container">
             <!-- Life box -->
             <div class="life">
-                <div class="player center">
+                <div class="center">
                     <h4>Jogador</h4>
                     <div class="lifeBar">
                         <div :style="[playerLifeBar]"></div>
                     </div>
-                    <p>{{ playerLife * 100 }}%</p>
+                    <p>{{ (playerLife * 100).toFixed(0) }}%</p>
                 </div>
-                <div class="monster center">
+                <div class="center">
                     <h4>Monstro</h4>
                     <div class="lifeBar">
                         <div :style="[monsterLifeBar]"></div>
                     </div>
-                    <p>{{ monsterLife * 100 }}%</p>
+                    <p>{{ (monsterLife * 100).toFixed(0) }}%</p>
                 </div>
             </div>
+            <div v-if="gameOver" class="center">{{ winner }} venceu!</div>
             <br />
             <!-- Buttons box -->
             <div class="buttons">
                 <div v-if="running">
-                    <button class="btn btn-danger">Ataque</button>
-                    <button class="btn btn-warning">Ataque especial</button>
-                    <button class="btn btn-success">Curar</button>
-                    <button class="btn btn-secondary" @click="running=false">
+                    <button @click="attack" class="btn btn-danger">
+                        Ataque
+                    </button>
+                    <button @click="specialAttack" class="btn btn-warning">
+                        Ataque especial
+                    </button>
+                    <button @click="healPlayer" class="btn btn-success">
+                        Curar
+                    </button>
+                    <button class="btn btn-secondary" @click="giveUp">
                         Desistir
                     </button>
                 </div>
 
                 <div v-else>
-                    <button class="btn btn-primary" @click="running=true">
+                    <button class="btn btn-primary" @click="reset">
                         Iniciar jogo
                     </button>
                 </div>
             </div>
             <!-- History box -->
-            <div class="history"></div>
+            <div v-if="attacks.length > 0" class="history">
+                <h3>Histórico</h3>
+                <div v-for="(attack) in attacks" :class="attack.who">
+                    <p>
+                        {{ attack.who.toUpperCase() }} {{ attack.action }}
+                        {{ attack.value.toFixed(0) }}
+                    </p>
+                </div>
+            </div>
         </div>
         <script src="app.js"></script>
     </body>
