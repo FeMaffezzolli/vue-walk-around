@@ -1,88 +1,85 @@
 <template>
-	<div id="app">
-		<h1>TO DO LIST</h1>
-		<span>
-			<input @keyup.enter="createNew" type="text" name="todo" id="input">
-			<button @click="createNew">OK</button>
-			<button v-if="list.length > 0" @click="clearList" id="clear">Clear</button>
-		</span>
-		<div>
-			<ul>
-				<li v-for="(todo, index) in list" :key="index">{{ todo }}</li>
-			</ul>
-		</div>
-	</div>
+  <div id="app">
+    <h1>TO DO LIST</h1>
+    <span>
+      <input @keyup.enter="createNew" type="text" name="todo" id="input">
+      <button @click="createNew">OK</button>
+      <button v-if="list.length > 0" @click="clearList" id="clear">Clear</button>
+    </span>
+    <Card v-for="(item, index) in list" :key="index" :text="item"/>
+  </div>
 </template>
 
 <script>
+import Card from "@/components/Card.vue";
+
 export default {
-	data() {
-		return {
-			list: []
-		}
-	},
-	methods: {
-		createNew() {
-			let item = document.querySelector("#input").value
-			if (!item) return
-			this.list.push(item)
-			document.querySelector("#input").value = ''
-		},
-		clearList() {
-			if (window.confirm("Desjea mesmo limpar?")) {
-				this.list = []
-			}
-		}
-	}
-}
+  components: { Card },
+  data() {
+    return {
+      list: []
+    };
+  },
+  methods: {
+    createNew() {
+      let item = document.querySelector("#input").value;
+      if (!item) return;
+      this.list.push(item);
+      document.querySelector("#input").value = "";
+    },
+    clearList() {
+      if (window.confirm("Desjea mesmo limpar?")) {
+        this.list = [];
+      }
+    }
+  }
+};
 </script>
 
 <style>
-	body {
-		font-family: 'Lato', sans-serif;
-		background: linear-gradient(to right, rgb(22, 34, 42), rgb(58, 96, 115));
-		color: #FFF;
-	}
+body {
+  font-family: "Lato", sans-serif;
+  background: linear-gradient(to right, rgb(22, 34, 42), rgb(58, 96, 115));
+  color: #fff;
+}
 
-	#app {
-		display: flex;
-		flex: 1;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		height: 90vh;
-	}
+#app {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
 
-	#app h1 {
-		margin-bottom: 5px;
-		font-weight: 300;
-		font-size: 3rem;
-	}
+#app h1 {
+  margin-bottom: 5px;
+  font-weight: 300;
+  font-size: 3rem;
+}
 
-	button {
-		background-color: #008CBA;
-		border: none;
-		color: white;
-		padding: 16px 32px;
-		text-align: center;
-		text-decoration: none;
-		display: inline-block;
-		font-size: 16px;
-	}
+button {
+  background-color: #008cba;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
 
-	#clear {
-		background-color: darkred;
-		margin-left: 3em;
-		padding: 16px 24px;
+#clear {
+  background-color: darkred;
+  margin-left: 3em;
+  padding: 16px 24px;
+}
 
-	}
+input {
+  padding: 16px 32px;
+}
 
-	input {
-		padding: 16px 32px;
-	}
-
-	li {
-		list-style: none
-	}
-
+li {
+  list-style: none;
+}
 </style>
