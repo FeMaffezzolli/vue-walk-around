@@ -4,18 +4,18 @@
     <span>
       <input @keyup.enter="createNew" type="text" name="todo" id="input">
       <button @click="createNew">OK</button>
-      <button v-if="list.length > 0" @click="clearList" id="clear">Clear</button>
+      <!-- <button v-if="list.length > 0" @click="clearList" id="clear">Clear</button> -->
     </span>
-    <Card v-for="(item, index) in list" :key="index" :text="item"/>
+    <Cards :list="list" :deleteAtIndex="deleteAtIndex"/>
   </div>
 </template>
 
 <script>
-import Card from "@/components/Card.vue";
+import Cards from "@/components/Cards.vue";
 
 export default {
-  components: { Card },
-  data() {
+  components: { Cards },
+  data: function() {
     return {
       list: []
     };
@@ -28,8 +28,13 @@ export default {
       document.querySelector("#input").value = "";
     },
     clearList() {
-      if (window.confirm("Desjea mesmo limpar?")) {
+      if (window.confirm("Deseja mesmo limpar?")) {
         this.list = [];
+      }
+    },
+    deleteAtIndex(i) {
+      if (window.confirm("Confirma a exclusão dessa tarefa?")) {
+        this.list.splice(i, 1);
       }
     }
   }
