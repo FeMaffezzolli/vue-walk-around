@@ -3,9 +3,9 @@
     <Card
       v-for="(item, index) in list"
       :key="index"
-      :id="index"
-      :text="item"
-      :deleteAtIndex="deleteAtIndex"
+      :item="item"
+      @clickedCard="$emit('clickedCard', index)"
+      @deleteAtIndex="$emit('deleteAtIndex', index)"
     />
   </div>
 </template>
@@ -14,12 +14,7 @@
 import Card from "@/components/Card.vue";
 export default {
   components: { Card },
-  props: ["list", "deleteAtIndex"],
-  methods: {
-    alerta() {
-      alert("opa");
-    }
-  }
+  props: ["list"]
 };
 </script>
 
